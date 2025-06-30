@@ -41,7 +41,7 @@ class AppConfig:
     BACKGROUND_IMAGE =os.path.join(os.getcwd(), "Background.jpg") 
     COMPANY_LOGO = os.path.join(os.getcwd(),"saslogo.jpg")         
     FIRST_STAGE_MODEL=os.path.join(os.getcwd(), "BC_RES1.pth")
-    if not os.path.exists(model_path):
+    if not os.path.exists(FIRST_STAGE_MODEL):
         with st.spinner("Downloading model..."):
             response = requests.get(model1_url)
             with open(model_path, "wb") as f:
@@ -49,7 +49,7 @@ class AppConfig:
             st.success("Model1 downloaded successfully!")
     FIRST_STAGE_ENCODER = os.path.join(os.getcwd(),"BC_3CLASS_ENCODER.pkl")
     SECOND_STAGE_MODEL = os.path.join(os.getcwd(), "BGMEG_RES1.pth")
-    if not os.path.exists(model_path):
+    if not os.path.exists(SECOND_STAGE_MODEL):
         with st.spinner("Downloading model..."):
             response = requests.get(model2_url)
             with open(model_path, "wb") as f:
