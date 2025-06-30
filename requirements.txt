@@ -1,0 +1,10 @@
+streamlit
+torch==2.6.0+cu124
+torchvision
+pillow
+opencv-python
+numpy
+scikit-learn
+matplotlib
+streamlit-webrtc
+
