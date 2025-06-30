@@ -50,13 +50,13 @@ if not os.path.exists(SECOND_STAGE_MODEL):
         with open(SECOND_STAGE_MODEL, "wb") as f:
             f.write(response.content)
         st.success("Model2 downloaded successfully!")
-    class AppConfig:
-         BACKGROUND_IMAGE = BACKGROUND_IMAGE
-         COMPANY_LOGO = COMPANY_LOGO
-         FIRST_STAGE_MODEL = FIRST_STAGE_MODEL
-         FIRST_STAGE_ENCODER = FIRST_STAGE_ENCODER
-         SECOND_STAGE_MODEL = SECOND_STAGE_MODEL
-         SECOND_STAGE_ENCODER = SECOND_STAGE_ENCODER
+class AppConfig:
+     BACKGROUND_IMAGE = BACKGROUND_IMAGE
+     COMPANY_LOGO = COMPANY_LOGO
+     FIRST_STAGE_MODEL = FIRST_STAGE_MODEL
+     FIRST_STAGE_ENCODER = FIRST_STAGE_ENCODER
+     SECOND_STAGE_MODEL = SECOND_STAGE_MODEL
+     SECOND_STAGE_ENCODER = SECOND_STAGE_ENCODER
 
     @staticmethod
     def get_image_as_base64(path):
