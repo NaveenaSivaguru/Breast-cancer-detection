@@ -40,13 +40,13 @@ class AppConfig:
     # File paths - use relative paths and place these files in your project directory
     BACKGROUND_IMAGE =os.path.join(os.getcwd(), "Background.jpg") 
     COMPANY_LOGO = os.path.join(os.getcwd(),"saslogo.jpg")         
-    FIRST_STAGE_MODEL = model_path = os.path.join(os.getcwd(), "BC_RES1.pth")
+    FIRST_STAGE_MODEL=os.path.join(os.getcwd(), "BC_RES1.pth")
     if not os.path.exists(model_path):
         with st.spinner("Downloading model..."):
             response = requests.get(model1_url)
             with open(model_path, "wb") as f:
                 f.write(response.content)
-            st.success("Model downloaded successfully!")
+            st.success("Model1 downloaded successfully!")
     FIRST_STAGE_ENCODER = os.path.join(os.getcwd(),"BC_3CLASS_ENCODER.pkl")
     SECOND_STAGE_MODEL = os.path.join(os.getcwd(), "BGMEG_RES1.pth")
     if not os.path.exists(model_path):
@@ -54,7 +54,7 @@ class AppConfig:
             response = requests.get(model2_url)
             with open(model_path, "wb") as f:
                 f.write(response.content)
-            st.success("Model downloaded successfully!")
+            st.success("Model2 downloaded successfully!")
     SECOND_STAGE_ENCODER = os.path.join(os.getcwd(),"BC_BEMG_ENCODER.pkl")
 
     @staticmethod
