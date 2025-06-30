@@ -38,7 +38,7 @@ from pathlib import Path
 # --- Configuration ---
 class AppConfig:
     # File paths - use relative paths and place these files in your project directory
-    BACKGROUND_IMAGE =os.path.join(os.getcwd(), "w1.jpg") 
+    BACKGROUND_IMAGE =os.path.join(os.getcwd(), "Background.jpg") 
     COMPANY_LOGO = os.path.join(os.getcwd(),"saslogo.jpg")         
     FIRST_STAGE_MODEL = model_path = os.path.join(os.getcwd(), "BC_RES1.pth")
     if not os.path.exists(model_path):
