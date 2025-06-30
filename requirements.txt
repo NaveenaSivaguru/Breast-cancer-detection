@@ -1,5 +1,5 @@
 streamlit
-torch==2.6.0+cu124
+torch
 torchvision
 pillow
 opencv-python
