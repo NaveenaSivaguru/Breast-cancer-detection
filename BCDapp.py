@@ -44,7 +44,7 @@ class AppConfig:
     if not os.path.exists(FIRST_STAGE_MODEL):
         with st.spinner("Downloading model..."):
             response = requests.get(model1_url)
-            with open(model_path, "wb") as f:
+            with open(FIRST_STAGE_MODEL, "wb") as f:
                 f.write(response.content)
             st.success("Model1 downloaded successfully!")
     FIRST_STAGE_ENCODER = os.path.join(os.getcwd(),"BC_3CLASS_ENCODER.pkl")
@@ -52,7 +52,7 @@ class AppConfig:
     if not os.path.exists(SECOND_STAGE_MODEL):
         with st.spinner("Downloading model..."):
             response = requests.get(model2_url)
-            with open(model_path, "wb") as f:
+            with open(SECOND_STAGE_MODEL, "wb") as f:
                 f.write(response.content)
             st.success("Model2 downloaded successfully!")
     SECOND_STAGE_ENCODER = os.path.join(os.getcwd(),"BC_BEMG_ENCODER.pkl")
