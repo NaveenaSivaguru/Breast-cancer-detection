@@ -19,10 +19,6 @@ import pathlib
 from pathlib import Path
 import base64
 import requests
-
-model1_url="https://github.com/NaveenaSivaguru/Breast-cancer-detection/releases/download/v1.0.0/BC_RES1.pth"
-model2_url="https://github.com/NaveenaSivaguru/Breast-cancer-detection/releases/download/v1.0.0/BGMEG_RES1.pth"
-
 # Set page config
 st.set_page_config(
     page_title="BreastScan AI",
@@ -30,32 +26,37 @@ st.set_page_config(
     layout="wide",
     initial_sidebar_state="expanded"
 )
+# --- Define all paths at the top ---
+BACKGROUND_IMAGE = os.path.join(os.getcwd(), "Background.jpg")
+COMPANY_LOGO = os.path.join(os.getcwd(), "saslogo.jpg")
+FIRST_STAGE_MODEL = os.path.join(os.getcwd(), "BC_RES1.pth")
+FIRST_STAGE_ENCODER = os.path.join(os.getcwd(), "BC_3CLASS_ENCODER.pkl")
+SECOND_STAGE_MODEL = os.path.join(os.getcwd(), "BGMEG_RES1.pth")
+SECOND_STAGE_ENCODER = os.path.join(os.getcwd(), "BC_BEMG_ENCODER.pkl")
 
+model1_url="https://github.com/NaveenaSivaguru/Breast-cancer-detection/releases/download/v1.0.0/BC_RES1.pth"
+model2_url="https://github.com/NaveenaSivaguru/Breast-cancer-detection/releases/download/v1.0.0/BGMEG_RES1.pth"
+# --- Download models if not present ---
+if not os.path.exists(FIRST_STAGE_MODEL):
+    with st.spinner("Downloading model 1..."):
+        response = requests.get(model1_url)
+        with open(FIRST_STAGE_MODEL, "wb") as f:
+            f.write(response.content)
+        st.success("Model1 downloaded successfully!")
 
-import base64
-from pathlib import Path
-
-# --- Configuration ---
-class AppConfig:
-    # File paths - use relative paths and place these files in your project directory
-    BACKGROUND_IMAGE =os.path.join(os.getcwd(), "Background.jpg") 
-    COMPANY_LOGO = os.path.join(os.getcwd(),"saslogo.jpg")         
-    FIRST_STAGE_MODEL=os.path.join(os.getcwd(), "BC_RES1.pth")
-    if not os.path.exists(FIRST_STAGE_MODEL):
-        with st.spinner("Downloading model..."):
-            response = requests.get(model1_url)
-            with open(FIRST_STAGE_MODEL, "wb") as f:
-                f.write(response.content)
-            st.success("Model1 downloaded successfully!")
-    FIRST_STAGE_ENCODER = os.path.join(os.getcwd(),"BC_3CLASS_ENCODER.pkl")
-    SECOND_STAGE_MODEL = os.path.join(os.getcwd(), "BGMEG_RES1.pth")
-    if not os.path.exists(SECOND_STAGE_MODEL):
-        with st.spinner("Downloading model..."):
-            response = requests.get(model2_url)
-            with open(SECOND_STAGE_MODEL, "wb") as f:
-                f.write(response.content)
-            st.success("Model2 downloaded successfully!")
-    SECOND_STAGE_ENCODER = os.path.join(os.getcwd(),"BC_BEMG_ENCODER.pkl")
+if not os.path.exists(SECOND_STAGE_MODEL):
+    with st.spinner("Downloading model 2..."):
+        response = requests.get(model2_url)
+        with open(SECOND_STAGE_MODEL, "wb") as f:
+            f.write(response.content)
+        st.success("Model2 downloaded successfully!")
+    class AppConfig:
+    BACKGROUND_IMAGE = BACKGROUND_IMAGE
+    COMPANY_LOGO = COMPANY_LOGO
+    FIRST_STAGE_MODEL = FIRST_STAGE_MODEL
+    FIRST_STAGE_ENCODER = FIRST_STAGE_ENCODER
+    SECOND_STAGE_MODEL = SECOND_STAGE_MODEL
+    SECOND_STAGE_ENCODER = SECOND_STAGE_ENCODER
 
     @staticmethod
     def get_image_as_base64(path):
