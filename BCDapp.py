@@ -21,7 +21,7 @@ import base64
 import requests
 # Set page config
 st.set_page_config(
-    page_title="BreastScan AI",
+    page_title="Breast Cancer Detection Using AI",
     page_icon="🩺",
     layout="wide",
     initial_sidebar_state="expanded"
@@ -465,8 +465,8 @@ def main():
         with st.container():
             st.markdown("""
             <div class="upload-container">
-                <h2 style="color: #2c3e50; margin-top: 0;">Upload Medical Image</h2>
-                <p style="color: #7f8c8d;">Please upload a mammogram or breast ultrasound image for analysis</p>
+                <h2 style="color: #2c3e50; margin-top: 0;">Upload Breast Thermal Images</h2>
+                <p style="color: #7f8c8d;">Please upload a Thermal infrared images for analysis</p>
             </div>
             """, unsafe_allow_html=True)
             
