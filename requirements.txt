@@ -7,5 +7,5 @@ numpy
 scikit-learn
 matplotlib
 streamlit-webrtc
-requests
+
 
